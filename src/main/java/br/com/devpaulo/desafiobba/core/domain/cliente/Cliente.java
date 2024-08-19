@@ -1,17 +1,23 @@
 package br.com.devpaulo.desafiobba.core.domain.cliente;
 
 import br.com.devpaulo.desafiobba.core.domain.endereco.Endereco;
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@Builder
+@Entity(name = "cliente")
+@Table(name = "tb_cliente")
 public class Cliente {
-    private Long id;
+
+    @Id
+    @Column(name = "cpf", length = 11)
     private String cpf;
+    @Column(name = "nome")
     private String nome;
-    private List<Endereco> endereco;
+    @OneToMany(mappedBy = "cliente")
+    private List<Endereco> enderecos;
 
 }

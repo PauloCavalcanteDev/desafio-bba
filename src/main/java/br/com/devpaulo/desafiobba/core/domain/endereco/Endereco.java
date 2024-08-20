@@ -2,17 +2,20 @@ package br.com.devpaulo.desafiobba.core.domain.endereco;
 
 import br.com.devpaulo.desafiobba.core.domain.cliente.Cliente;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 
-@Data
 @Entity(name = "endereco")
 @Table(name = "tb_endereco")
-public class Endereco implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

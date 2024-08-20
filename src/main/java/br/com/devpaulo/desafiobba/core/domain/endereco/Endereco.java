@@ -3,14 +3,16 @@ package br.com.devpaulo.desafiobba.core.domain.endereco;
 import br.com.devpaulo.desafiobba.core.domain.cliente.Cliente;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.lang.NonNull;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 
 @Data
 @Entity(name = "endereco")
 @Table(name = "tb_endereco")
-public class Endereco {
+public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -18,20 +20,28 @@ public class Endereco {
     private UUID Id;
     @ManyToOne
     @JoinColumn(name = "cpf")
+    @NonNull
     private Cliente cliente;
     @Column(name = "cep", length = 8)
+    @NonNull
     private String cep;
     @Column(name = "logadouro")
+    @NonNull
     private String logradouro;
     @Column(name = "complemento")
+    @NonNull
     private String complemento;
     @Column(name = "bairro")
+    @NonNull
     private String bairro;
-    @Column(name = "localidade")
+    @NonNull
+    @Column(name = "cidade")
     private String localidade;
     @Column(name = "uf")
+    @NonNull
     private String uf;
     @Column(name = "numero")
+    @NonNull
     private Integer numero;
 
 }

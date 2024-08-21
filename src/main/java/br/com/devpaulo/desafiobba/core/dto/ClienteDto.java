@@ -1,6 +1,6 @@
 package br.com.devpaulo.desafiobba.core.dto;
 
-import br.com.devpaulo.desafiobba.adapters.api.viacep.dto.EnderecoDto;
+import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 
 import java.util.List;
 

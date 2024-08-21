@@ -1,7 +1,7 @@
-package br.com.devpaulo.desafiobba.adapters.api.ibge.client;
+package br.com.devpaulo.desafiobba.infra.api.ibge.client;
 
-import br.com.devpaulo.desafiobba.adapters.api.ibge.dto.EstadoDto;
-import br.com.devpaulo.desafiobba.adapters.api.viacep.dto.EnderecoDto;
+import br.com.devpaulo.desafiobba.infra.api.ibge.dto.EstadoDto;
+import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;

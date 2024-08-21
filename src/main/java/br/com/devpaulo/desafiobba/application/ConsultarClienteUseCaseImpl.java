@@ -1,22 +1,21 @@
 package br.com.devpaulo.desafiobba.application;
 
-import br.com.devpaulo.desafiobba.adapters.api.viacep.dto.EnderecoDto;
 import br.com.devpaulo.desafiobba.core.dto.ClienteDto;
 import br.com.devpaulo.desafiobba.core.exception.ClienteNotFoundException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarClienteUseCase;
+import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import br.com.devpaulo.desafiobba.ports.ConsultarClientPort;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
+@Log4j2
 public class ConsultarClienteUseCaseImpl implements ConsultarClienteUseCase {
 
-    private static final Logger log = LoggerFactory.getLogger(ConsultarClienteUseCaseImpl.class);
     private final ConsultarClientPort clientPort;
 
     @Override

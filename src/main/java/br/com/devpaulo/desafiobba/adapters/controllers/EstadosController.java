@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/api/v1/estados")
 @RequiredArgsConstructor
 @Slf4j
-public class EstadoController {
+public class EstadosController {
 
     private final ConsultarEstadosUseCase consultarEstadosUseCase;
 

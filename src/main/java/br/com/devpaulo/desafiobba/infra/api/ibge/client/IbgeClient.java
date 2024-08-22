@@ -1,7 +1,7 @@
 package br.com.devpaulo.desafiobba.infra.api.ibge.client;
 
+import br.com.devpaulo.desafiobba.core.dto.MunicipioDto;
 import br.com.devpaulo.desafiobba.infra.api.ibge.dto.EstadoResponseDto;
-import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -9,17 +9,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+
 @Service
 public class IbgeClient {
-
     private final RestTemplate restTemplate = new RestTemplate();
 
 
-    public String consultaMunicio(String cep) {
-        ResponseEntity<EnderecoDto> response = restTemplate.getForEntity(
-                String.format("https://viacep.com.br/ws/%s/json", cep), EnderecoDto.class);
-        return null;
+    public List<MunicipioDto> getMunicipios(String uf) {
+        ResponseEntity<List<MunicipioDto>> response = restTemplate.exchange(
+                String.format(
+                        "https://servicodados.ibge.gov.br/api/v1/localidades/estados/%s/municipios", uf),
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<MunicipioDto>>() {
+                }
+        );
+        return response.getBody();
     }
+
 
     public List<EstadoResponseDto> consultaEstadosBrasileiros() {
 
@@ -27,7 +34,8 @@ public class IbgeClient {
                 "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<EstadoResponseDto>>() {}
+                new ParameterizedTypeReference<List<EstadoResponseDto>>() {
+                }
         );
         return response.getBody();
     }

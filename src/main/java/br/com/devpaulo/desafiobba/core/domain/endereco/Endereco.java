@@ -3,6 +3,7 @@ package br.com.devpaulo.desafiobba.core.domain.endereco;
 import br.com.devpaulo.desafiobba.core.domain.cliente.Cliente;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 public class Endereco {
 
     @Id
@@ -43,8 +45,4 @@ public class Endereco {
     @Column(name = "uf")
     @NonNull
     private String uf;
-    @Column(name = "numero")
-    @NonNull
-    private Integer numero;
-
 }

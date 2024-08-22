@@ -10,5 +10,5 @@ public interface EstadosMunicipiosPort {
 
 
     List<EstadoDto> listarEstados() throws IbgeClientException;
-    List<MunicipioDto> listarMunicipios(String uf);
+    List<MunicipioDto> listarMunicipios(String uf) throws IbgeClientException;
 }

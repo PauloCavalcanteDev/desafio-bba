@@ -23,7 +23,7 @@ public class EstadosMunicipiosPortImpl implements EstadosMunicipiosPort {
     @Override
     public List<EstadoDto> listarEstados() throws IbgeClientException {
         try {
-            log.info("Inciando Integração com API do IBGE.");
+            log.info("Inciando Busca de estados na API do IBGE.");
             var estados = client.consultaEstadosBrasileiros();
 
             return estados.stream()
@@ -37,7 +37,13 @@ public class EstadosMunicipiosPortImpl implements EstadosMunicipiosPort {
     }
 
     @Override
-    public List<MunicipioDto> listarMunicipios(String uf) {
-        return client.getMunicipios(uf);
+    public List<MunicipioDto> listarMunicipios(String uf) throws IbgeClientException {
+        try {
+            log.info("Inciando Busca de municipios para o estado '{}' na API do IBGE.", uf);
+            return client.getMunicipios(uf);
+
+        } catch (Exception ex) {
+            throw new IbgeClientException(ex.getMessage());
+        }
     }
 }

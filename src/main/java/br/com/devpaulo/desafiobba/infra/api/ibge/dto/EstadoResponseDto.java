@@ -1,6 +1,6 @@
 package br.com.devpaulo.desafiobba.infra.api.ibge.dto;
 
-public record EstadoDto(
+public record EstadoResponseDto(
         Integer id,
         String sigla,
         String nome,

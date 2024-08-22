@@ -1,4 +1,4 @@
-package br.com.devpaulo.desafiobba.adapters.controllers.cliente;
+package br.com.devpaulo.desafiobba.adapters.controllers;
 
 import br.com.devpaulo.desafiobba.core.exception.ClienteNotFoundException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarClienteUseCase;

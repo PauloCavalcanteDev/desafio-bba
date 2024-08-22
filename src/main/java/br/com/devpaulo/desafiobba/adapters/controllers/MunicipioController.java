@@ -1,4 +1,4 @@
-package br.com.devpaulo.desafiobba.adapters.controllers.municipio;
+package br.com.devpaulo.desafiobba.adapters.controllers;
 
 
 import org.springframework.http.ResponseEntity;

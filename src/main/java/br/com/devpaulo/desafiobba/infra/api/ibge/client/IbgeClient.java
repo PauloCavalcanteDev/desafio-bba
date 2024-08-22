@@ -1,6 +1,6 @@
 package br.com.devpaulo.desafiobba.infra.api.ibge.client;
 
-import br.com.devpaulo.desafiobba.infra.api.ibge.dto.EstadoDto;
+import br.com.devpaulo.desafiobba.infra.api.ibge.dto.EstadoResponseDto;
 import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -21,13 +21,13 @@ public class IbgeClient {
         return null;
     }
 
-    public List<EstadoDto> consultaEstadosBrasileiros() {
+    public List<EstadoResponseDto> consultaEstadosBrasileiros() {
 
-        ResponseEntity<List<EstadoDto>> response = restTemplate.exchange(
+        ResponseEntity<List<EstadoResponseDto>> response = restTemplate.exchange(
                 "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<EstadoDto>>() {}
+                new ParameterizedTypeReference<List<EstadoResponseDto>>() {}
         );
         return response.getBody();
     }

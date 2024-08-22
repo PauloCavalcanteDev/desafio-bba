@@ -1,4 +1,4 @@
-package br.com.devpaulo.desafiobba.adapters.controllers.endereco;
+package br.com.devpaulo.desafiobba.adapters.controllers;
 
 import br.com.devpaulo.desafiobba.core.exception.EnderecoNotFoundException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarEnderecoUseCase;

@@ -1,11 +1,15 @@
-package br.com.devpaulo.desafiobba.adapters.controllers.estado;
+package br.com.devpaulo.desafiobba.adapters.controllers;
 
+import br.com.devpaulo.desafiobba.core.dto.EstadoDto;
+import br.com.devpaulo.desafiobba.core.usecase.ConsultarEstadosUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -14,9 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class EstadoController {
 
+    private final ConsultarEstadosUseCase consultarEstadosUseCase;
+
     @GetMapping
-    public ResponseEntity<String> getEstados() {
-        return ResponseEntity.ok("API Estados Running!");
+    public ResponseEntity<List<EstadoDto>> getEstados() {
+        return ResponseEntity.ok(consultarEstadosUseCase.execute());
+
     }
 
 }

@@ -4,6 +4,8 @@ package br.com.devpaulo.desafiobba.adapters.controllers;
 import br.com.devpaulo.desafiobba.core.dto.MunicipioDto;
 import br.com.devpaulo.desafiobba.core.exception.IbgeClientException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarMunicipiosUseCase;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +24,8 @@ public class MunicipiosController {
 
     private final ConsultarMunicipiosUseCase useCase;
 
-    @GetMapping("/{estado}")
-    public ResponseEntity<List<MunicipioDto>> getMunicipios(@PathVariable("estado") String estado) {
+    @GetMapping("/{siglaUf}")
+    public ResponseEntity<List<MunicipioDto>> getMunicipios(@PathVariable("siglaUf") @Valid @Size(min = 2, max = 2) String estado) {
         log.info("Listando Municipios do estado de {}", estado);
         try {
             return ResponseEntity.ok(useCase.execute(estado));

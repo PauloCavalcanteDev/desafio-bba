@@ -1,6 +1,7 @@
 package br.com.devpaulo.desafiobba.adapters.controllers;
 
 import br.com.devpaulo.desafiobba.core.dto.EstadoDto;
+import br.com.devpaulo.desafiobba.core.exception.IbgeClientException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarEstadosUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +23,12 @@ public class EstadosController {
 
     @GetMapping
     public ResponseEntity<List<EstadoDto>> getEstados() {
-        return ResponseEntity.ok(consultarEstadosUseCase.execute());
-
+        log.info("Listando Estados Brasileiros!");
+        try {
+            return ResponseEntity.ok(consultarEstadosUseCase.execute());
+        } catch (IbgeClientException ex) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
 }

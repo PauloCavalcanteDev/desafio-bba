@@ -1,8 +1,8 @@
 package br.com.devpaulo.desafiobba.adapters.ports.impl;
 
+import br.com.devpaulo.desafiobba.adapters.ports.ConsultarClientPort;
 import br.com.devpaulo.desafiobba.core.domain.cliente.Cliente;
 import br.com.devpaulo.desafiobba.infra.database.ClienteRepository;
-import br.com.devpaulo.desafiobba.adapters.ports.ConsultarClientPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class ConsultarClientPortImpl implements ConsultarClientPort {
 
     @Override
     public Optional<Cliente> buscarClientePorCpf(String cpf) {
-        log.info("Iniciando Busca na base de dados!");
+        log.info("Iniciando Busca de cliente {} na base de dados!", cpf);
         var cliente = repository.findById(cpf);
         log.info("Busca Finalizada.");
         return cliente;

@@ -1,6 +1,5 @@
 package br.com.devpaulo.desafiobba.adapters.controllers;
 
-import br.com.devpaulo.desafiobba.core.domain.endereco.Endereco;
 import br.com.devpaulo.desafiobba.core.exception.ClienteNotFoundException;
 import br.com.devpaulo.desafiobba.core.exception.EnderecoNotFoundException;
 import br.com.devpaulo.desafiobba.core.usecase.AlterarEnderecoUseCase;
@@ -35,18 +34,20 @@ public class ClienteController {
     }
 
     @PutMapping("/{cpf}/enderecos/{enderecoId}")
-    public ResponseEntity<Void> atualizarEndereco(
-            @PathVariable String cpf,
-            @PathVariable UUID enderecoId,
-            @RequestBody EnderecoDto novoEndereco) {
+    public ResponseEntity<?> atualizarEndereco(@PathVariable String cpf, @PathVariable UUID enderecoId,
+                                               @RequestBody EnderecoDto novoEndereco) {
 
-        Endereco enderecoAtualizado = null;
+        log.info("Novo Endereco Recebido: {} - Cliente {}", novoEndereco, cpf);
         try {
-            enderecoAtualizado = alterarEnderecoUseCase.execute(cpf, enderecoId, novoEndereco);
+            alterarEnderecoUseCase.execute(cpf, enderecoId, novoEndereco);
+            return ResponseEntity.noContent().build();
+
         } catch (EnderecoNotFoundException e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Endereço Não Encontrado.");
+        } catch (ClienteNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente Não Encontrado.");
+
         }
-        return ResponseEntity.noContent().build();
     }
 
 }

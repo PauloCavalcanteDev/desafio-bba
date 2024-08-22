@@ -1,8 +1,8 @@
-package br.com.devpaulo.desafiobba.adapters.dataservice;
+package br.com.devpaulo.desafiobba.adapters.ports.impl;
 
 import br.com.devpaulo.desafiobba.core.domain.cliente.Cliente;
 import br.com.devpaulo.desafiobba.infra.database.ClienteRepository;
-import br.com.devpaulo.desafiobba.ports.ConsultarClientPort;
+import br.com.devpaulo.desafiobba.adapters.ports.ConsultarClientPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

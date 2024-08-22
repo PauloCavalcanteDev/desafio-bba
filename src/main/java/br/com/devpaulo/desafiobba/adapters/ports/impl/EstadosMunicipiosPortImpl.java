@@ -1,9 +1,9 @@
-package br.com.devpaulo.desafiobba.adapters.webservice;
+package br.com.devpaulo.desafiobba.adapters.ports.impl;
 
 import br.com.devpaulo.desafiobba.core.dto.EstadoDto;
 import br.com.devpaulo.desafiobba.core.dto.MunicipioDto;
 import br.com.devpaulo.desafiobba.infra.api.ibge.client.IbgeClient;
-import br.com.devpaulo.desafiobba.ports.EstadosMunicipiosPort;
+import br.com.devpaulo.desafiobba.adapters.ports.EstadosMunicipiosPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

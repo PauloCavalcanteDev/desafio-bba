@@ -1,4 +1,4 @@
-package br.com.devpaulo.desafiobba.ports;
+package br.com.devpaulo.desafiobba.adapters.ports;
 
 import br.com.devpaulo.desafiobba.core.dto.EstadoDto;
 import br.com.devpaulo.desafiobba.core.dto.MunicipioDto;

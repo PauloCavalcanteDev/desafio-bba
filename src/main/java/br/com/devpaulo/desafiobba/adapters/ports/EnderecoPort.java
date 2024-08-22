@@ -1,4 +1,4 @@
-package br.com.devpaulo.desafiobba.ports;
+package br.com.devpaulo.desafiobba.adapters.ports;
 
 import br.com.devpaulo.desafiobba.core.domain.endereco.Endereco;
 import br.com.devpaulo.desafiobba.core.exception.EnderecoNotFoundException;

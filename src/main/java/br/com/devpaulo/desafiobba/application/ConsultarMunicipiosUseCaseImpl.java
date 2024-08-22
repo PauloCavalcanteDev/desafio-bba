@@ -2,7 +2,7 @@ package br.com.devpaulo.desafiobba.application;
 
 import br.com.devpaulo.desafiobba.core.dto.MunicipioDto;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarMunicipiosUseCase;
-import br.com.devpaulo.desafiobba.ports.EstadosMunicipiosPort;
+import br.com.devpaulo.desafiobba.adapters.ports.EstadosMunicipiosPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

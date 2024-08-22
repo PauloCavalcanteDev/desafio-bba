@@ -1,11 +1,11 @@
-package br.com.devpaulo.desafiobba.adapters.webservice;
+package br.com.devpaulo.desafiobba.adapters.ports.impl;
 
 import br.com.devpaulo.desafiobba.core.domain.endereco.Endereco;
 import br.com.devpaulo.desafiobba.core.exception.EnderecoNotFoundException;
 import br.com.devpaulo.desafiobba.infra.api.viacep.client.ViacepClient;
 import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import br.com.devpaulo.desafiobba.infra.database.EnderecoRepository;
-import br.com.devpaulo.desafiobba.ports.EnderecoPort;
+import br.com.devpaulo.desafiobba.adapters.ports.EnderecoPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

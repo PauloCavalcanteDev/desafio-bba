@@ -3,7 +3,7 @@ package br.com.devpaulo.desafiobba.core.usecase;
 import br.com.devpaulo.desafiobba.core.domain.endereco.Endereco;
 import br.com.devpaulo.desafiobba.core.exception.EnderecoNotFoundException;
 import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
-import br.com.devpaulo.desafiobba.ports.EnderecoPort;
+import br.com.devpaulo.desafiobba.adapters.ports.EnderecoPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

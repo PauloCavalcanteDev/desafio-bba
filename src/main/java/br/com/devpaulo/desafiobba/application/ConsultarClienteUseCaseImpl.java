@@ -4,7 +4,7 @@ import br.com.devpaulo.desafiobba.core.dto.ClienteDto;
 import br.com.devpaulo.desafiobba.core.exception.ClienteNotFoundException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarClienteUseCase;
 import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
-import br.com.devpaulo.desafiobba.ports.ConsultarClientPort;
+import br.com.devpaulo.desafiobba.adapters.ports.ConsultarClientPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;

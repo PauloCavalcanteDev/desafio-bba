@@ -14,7 +14,6 @@ import java.util.UUID;
 @Entity(name = "endereco")
 @Table(name = "tb_endereco")
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Builder
 public class Endereco {
@@ -45,4 +44,5 @@ public class Endereco {
     @Column(name = "uf")
     @NonNull
     private String uf;
+
 }

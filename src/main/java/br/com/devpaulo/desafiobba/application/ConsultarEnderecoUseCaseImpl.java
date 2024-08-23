@@ -17,7 +17,7 @@ public class ConsultarEnderecoUseCaseImpl implements ConsultarEnderecoUseCase {
 
     @Override
     public EnderecoDto buscarEnderecoPorCep(String cep) throws EnderecoNotFoundException {
-        EnderecoDto endereco = port.consultarenderecoPorCep(cep);
+        EnderecoDto endereco = port.consultarEnderecoPorCep(cep);
         if (endereco.cep() != null) {
             log.info("Endereço Recuperado com Sucesso -> {}.", endereco);
             return endereco;

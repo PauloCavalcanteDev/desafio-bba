@@ -26,7 +26,7 @@ public class ConsultarEstadosUseCaseImpl implements ConsultarEstadosUseCase {
         return this.ordenarEstados(estados);
     }
 
-    private List<EstadoDto> ordenarEstados(List<EstadoDto> estados) {
+    public List<EstadoDto> ordenarEstados(List<EstadoDto> estados) {
         log.info("Retornando Lista de Estados Ordenada!");
 
         return estados.stream()

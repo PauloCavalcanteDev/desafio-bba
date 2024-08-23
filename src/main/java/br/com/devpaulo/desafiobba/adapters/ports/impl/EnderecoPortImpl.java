@@ -22,7 +22,7 @@ public class EnderecoPortImpl implements EnderecoPort {
     private final EnderecoRepository enderecoRepository;
 
     @Override
-    public EnderecoDto consultarenderecoPorCep(String cep) {
+    public EnderecoDto consultarEnderecoPorCep(String cep) {
         log.info("Iniciando integragação Via Cep , Buscando cep: {}.", cep);
         return client.consultarenderecoPorCep(cep);
 

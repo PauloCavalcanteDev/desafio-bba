@@ -7,7 +7,7 @@ import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import java.util.UUID;
 
 public interface EnderecoPort {
-    EnderecoDto consultarenderecoPorCep(String cep);
+    EnderecoDto consultarEnderecoPorCep(String cep);
 
     Endereco atulizarEndereco(UUID enderecoId, EnderecoDto novoEndereco) throws EnderecoNotFoundException;
 }

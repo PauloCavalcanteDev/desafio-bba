@@ -8,6 +8,7 @@ import br.com.devpaulo.desafiobba.core.usecase.ConsultarClienteUseCase;
 import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -49,11 +50,11 @@ public class ClienteControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 200 e o cliente conforme o cpf enviado")
     public void testGetClientes_Success() throws Exception {
         String cpf = "12345678901";
         EnderecoDto enderecoDto = mockEndereco(CEP);
         ClienteDto cliente = new ClienteDto(cpf, "Teste 1", Arrays.asList(enderecoDto));
-
 
         when(clienteUseCase.consultarClientePorCpf(cpf)).thenReturn(cliente);
 
@@ -64,6 +65,7 @@ public class ClienteControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 404 e a mensagem cliente não encontrado.")
     public void testGetClientes_NotFound() throws Exception {
         String cpf = "12345678901";
         when(clienteUseCase.consultarClientePorCpf(cpf)).thenThrow(new ClienteNotFoundException("Cliente Não Encontrado."));
@@ -74,6 +76,7 @@ public class ClienteControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 201 um payload no-content")
     public void testAtualizarEndereco_Success() throws Exception {
         String cpf = "12345678901";
         UUID enderecoId = UUID.randomUUID();
@@ -86,6 +89,7 @@ public class ClienteControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 404 e a mensagem endereço não encontrado.")
     public void testAtualizarEndereco_EnderecoNotFound() throws Exception {
         String cpf = "12345678901";
         UUID enderecoId = UUID.randomUUID();
@@ -101,6 +105,7 @@ public class ClienteControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 404 e a mensagem cliente não encontrado.")
     public void testAtualizarEndereco_ClienteNotFound() throws Exception {
         String cpf = "12345678901";
         UUID enderecoId = UUID.randomUUID();

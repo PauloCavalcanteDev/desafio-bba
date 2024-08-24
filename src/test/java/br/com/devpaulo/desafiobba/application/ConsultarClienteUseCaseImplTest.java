@@ -7,6 +7,7 @@ import br.com.devpaulo.desafiobba.core.dto.ClienteDto;
 import br.com.devpaulo.desafiobba.core.exception.ClienteNotFoundException;
 import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -33,8 +34,9 @@ class ConsultarClienteUseCaseImplTest {
     }
 
     @Test
+    @DisplayName("Deve retornar o cliente e seus respectivos enderecos ao receber um cpf válido")
     void testConsultarClientePorCpf_Success() throws ClienteNotFoundException {
-        // Arrange
+
         String cpf = "12345678900";
         Cliente cliente = new Cliente(
                 cpf,
@@ -52,10 +54,10 @@ class ConsultarClienteUseCaseImplTest {
         );
         when(clientPort.buscarClientePorCpf(cpf)).thenReturn(Optional.of(cliente));
 
-        // Act
+
         ClienteDto result = consultarClienteUseCase.consultarClientePorCpf(cpf);
 
-        // Assert
+
         assertNotNull(result);
         assertEquals(cpf, result.cpf());
         assertEquals("João da Silva", result.nome());
@@ -69,12 +71,12 @@ class ConsultarClienteUseCaseImplTest {
     }
 
     @Test
+    @DisplayName("Deve lançar uma exceção ao busca um cliente que não exista na base de dados.")
     void testConsultarClientePorCpf_ClienteNotFound() {
-        // Arrange
+
         String cpf = "12345678900";
         when(clientPort.buscarClientePorCpf(cpf)).thenReturn(Optional.empty());
 
-        // Act & Assert
         ClienteNotFoundException exception = assertThrows(ClienteNotFoundException.class, () ->
                 consultarClienteUseCase.consultarClientePorCpf(cpf)
         );

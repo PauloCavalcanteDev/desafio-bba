@@ -4,6 +4,7 @@ import br.com.devpaulo.desafiobba.core.dto.MunicipioDto;
 import br.com.devpaulo.desafiobba.core.exception.IbgeClientException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarMunicipiosUseCase;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -32,6 +33,7 @@ public class MunicipiosControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 200 e a uma lista de municipios pertecentes aquele estado.")
     public void testGetMunicipios_Success() throws IbgeClientException {
         String estado = "SP";
         List<MunicipioDto> municipios = Arrays.asList(
@@ -47,6 +49,7 @@ public class MunicipiosControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retornar um erro 500 ao falhar a comunicação com o clint ibge.")
     public void testGetMunicipios_IbgeClientException() throws IbgeClientException {
         String estado = "SP";
         when(consultarMunicipiosUseCase.execute(estado)).thenThrow(new IbgeClientException("Erro ao consultar IBGE"));

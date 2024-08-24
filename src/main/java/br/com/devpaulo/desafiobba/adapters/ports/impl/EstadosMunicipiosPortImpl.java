@@ -19,7 +19,6 @@ public class EstadosMunicipiosPortImpl implements EstadosMunicipiosPort {
 
     private final IbgeClient client;
 
-
     @Override
     public List<EstadoDto> listarEstados() throws IbgeClientException {
         try {

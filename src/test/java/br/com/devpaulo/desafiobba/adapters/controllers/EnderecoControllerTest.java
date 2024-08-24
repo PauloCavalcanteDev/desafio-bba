@@ -4,6 +4,7 @@ import br.com.devpaulo.desafiobba.core.exception.EnderecoNotFoundException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarEnderecoUseCase;
 import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -29,6 +30,7 @@ public class EnderecoControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 200 e o endereço pesquisado.")
     public void testGetEndereco_Success() throws EnderecoNotFoundException {
         EnderecoDto endereco = mockEndereco(CEP);
         when(consultarEnderecoUseCase.buscarEnderecoPorCep(CEP)).thenReturn(endereco);
@@ -40,6 +42,7 @@ public class EnderecoControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 404 e a mensagem endereço não encontrado")
     public void testGetEndereco_NotFound() throws EnderecoNotFoundException {
         String cep = "12345678";
         when(consultarEnderecoUseCase.buscarEnderecoPorCep(cep)).thenThrow(new EnderecoNotFoundException("Endereço não encontrado"));

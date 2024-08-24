@@ -1,18 +1,19 @@
 package br.com.devpaulo.desafiobba.application;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
-
 import br.com.devpaulo.desafiobba.adapters.ports.EstadosMunicipiosPort;
 import br.com.devpaulo.desafiobba.core.dto.EstadoDto;
 import br.com.devpaulo.desafiobba.core.exception.IbgeClientException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 public class ConsultarEstadosUseCaseImplTest {
 
@@ -28,8 +29,9 @@ public class ConsultarEstadosUseCaseImplTest {
     }
 
     @Test
+    @DisplayName("Deve trazer a lista de estados ordenada")
     public void testExecute_Success() throws IbgeClientException {
-        // Arrange
+
         List<EstadoDto> estados = List.of(
                 new EstadoDto("São Paulo", "SP"),
                 new EstadoDto("Rio de Janeiro", "RJ"),
@@ -39,18 +41,18 @@ public class ConsultarEstadosUseCaseImplTest {
         );
         when(estadosMunicipiosPort.listarEstados()).thenReturn(estados);
 
-        // Act
         List<EstadoDto> result = consultarEstadosUseCase.execute();
 
         // Assert
         assertNotNull(result);
         assertEquals(4, result.size());
-//        assertEquals("Rio de Janeiro", result.get(0).estado());
-//        assertEquals("São Paulo", result.get(1).estado());
-//        assertEquals("Goias", result.get(1).estado());
-//        assertEquals("Minas Gerais", result.get(2).estado());
+        assertEquals("Rio de Janeiro", result.get(0).estado());
+        assertEquals("São Paulo", result.get(1).estado());
+        assertEquals("Goias", result.get(2).estado());
+        assertEquals("Minas Gerais", result.get(3).estado());
     }
 
+    @DisplayName("Deve lançar uma exceção ao falhar a conexão com client IBGE.")
     @Test
     public void testExecute_IbgeClientException() throws IbgeClientException {
         // Arrange
@@ -63,8 +65,9 @@ public class ConsultarEstadosUseCaseImplTest {
     }
 
     @Test
+    @DisplayName("Deve ordenar a lista de estados")
     public void testOrdenarEstados() {
-        // Arrange
+
         List<EstadoDto> estados = List.of(
                 new EstadoDto("Minas Gerais", "MG"),
                 new EstadoDto("São Paulo", "SP"),
@@ -72,10 +75,9 @@ public class ConsultarEstadosUseCaseImplTest {
                 new EstadoDto("Espírito Santo", "ES")
         );
 
-        // Act
         List<EstadoDto> result = consultarEstadosUseCase.ordenarEstados(estados);
 
-        // Assert
+
         assertNotNull(result);
         assertEquals(4, result.size());
         assertEquals("São Paulo", result.get(1).estado());

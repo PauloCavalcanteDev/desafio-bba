@@ -4,6 +4,7 @@ import br.com.devpaulo.desafiobba.core.dto.EstadoDto;
 import br.com.devpaulo.desafiobba.core.exception.IbgeClientException;
 import br.com.devpaulo.desafiobba.core.usecase.ConsultarEstadosUseCase;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -32,6 +33,7 @@ public class EstadosControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retonar statuscode 200 e a uma lista de estados ordenada.")
     public void testGetEstados_Success() throws IbgeClientException {
         List<EstadoDto> estados = Arrays.asList(
                 new EstadoDto("SP", "São Paulo"),
@@ -47,6 +49,7 @@ public class EstadosControllerTest {
     }
 
     @Test
+    @DisplayName("Deve retornar um erro 500 ao falhar a comunicação com o clint ibge.")
     public void testGetEstados_IbgeClientException() throws IbgeClientException {
         when(consultarEstadosUseCase.execute()).thenThrow(new IbgeClientException("Erro ao consultar IBGE"));
 

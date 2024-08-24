@@ -4,6 +4,7 @@ import br.com.devpaulo.desafiobba.adapters.ports.EnderecoPort;
 import br.com.devpaulo.desafiobba.core.exception.EnderecoNotFoundException;
 import br.com.devpaulo.desafiobba.infra.api.viacep.dto.EnderecoDto;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -26,16 +27,15 @@ class ConsultarEnderecoUseCaseImplTest {
     }
 
     @Test
+    @DisplayName("Deve receber um cep e retornar o endereço correspondente")
     void testBuscarEnderecoPorCep_Success() throws EnderecoNotFoundException {
-        // Arrange
-        String cep = "12345-678";
+
+        String cep = "12345678";
         EnderecoDto enderecoDto = new EnderecoDto(cep, "Rua Exemplo", "", "Centro", "Cidade", "UF");
         when(port.consultarEnderecoPorCep(cep)).thenReturn(enderecoDto);
 
-        // Act
         EnderecoDto result = consultarEnderecoUseCase.buscarEnderecoPorCep(cep);
 
-        // Assert
         assertNotNull(result);
         assertEquals(cep, result.cep());
         assertEquals("Rua Exemplo", result.logradouro());
@@ -45,8 +45,9 @@ class ConsultarEnderecoUseCaseImplTest {
     }
 
     @Test
+    @DisplayName("Deve lançar uma exceção ao receber um cep inválido")
     void testBuscarEnderecoPorCep_EnderecoNotFound() {
-        // Arrange
+
         String cep = "12345678";
         EnderecoDto enderecoNull = new EnderecoDto(
                 null,
@@ -60,7 +61,6 @@ class ConsultarEnderecoUseCaseImplTest {
 
         when(port.consultarEnderecoPorCep(cep)).thenReturn(enderecoNull);
 
-        // Act & Assert
         EnderecoNotFoundException exception = assertThrows(EnderecoNotFoundException.class, () ->
                 consultarEnderecoUseCase.buscarEnderecoPorCep(cep)
         );

@@ -2,6 +2,7 @@ package br.com.devpaulo.desafiobba.adapters.ports.impl;
 
 import br.com.devpaulo.desafiobba.core.domain.cliente.Cliente;
 import br.com.devpaulo.desafiobba.infra.database.ClienteRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,6 +26,7 @@ class ConsultarClientPortImplTest {
     ConsultarClientPortImpl clientPort;
 
     @Test
+    @DisplayName("Deve chamar o cliente repository e retonar um cliente da base de dados")
     void testBuscarClientePorCpf() {
         String cpf = "12345678900";
         Cliente cliente = new Cliente();
@@ -37,6 +39,7 @@ class ConsultarClientPortImplTest {
     }
 
     @Test
+    @DisplayName("Deve retornar uma exceção ao não encontrar o cpf na base de dados.")
     void testBuscarClientePorCpfNotFound() {
         String cpf = "12345678900";
         when(clienteRepository.findById(cpf)).thenReturn(Optional.empty());
